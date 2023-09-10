@@ -3,15 +3,16 @@ server:
 spring:
   application:
     name: serie-service
-  datasource:
-    driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3370/serie-dev
-    username: usr-serie
-    password: pwd-serie
-  jpa:
-    hibernate.ddl-auto: update
-    generate-ddl: true
-    show-sql: true
+  config:
+    import: optional:configserver:http://localhost:8888
+  mongodb:
+    embedded:
+      version: 4.0.2
+  data:
+    mongodb:
+      database: test
+      port: 27017
+
 
 eureka:
   client:
